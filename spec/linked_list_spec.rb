@@ -2,6 +2,8 @@ require "rspec"
 require_relative "../lib/linked_list"
 
 RSpec.describe LinkedList do
+  let(:subject) { LinkedList.new([1, "2", :a, true]) }
+
   describe "::new" do
   end
 
