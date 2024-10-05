@@ -127,6 +127,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#contains?" do
+    it "returns false when the list doesn't contain the value" do
+      expect(subject.contains?("not an element")).to eql(false)
+    end
+
+    it "returns true when the list contains the value" do
+      expect(subject.contains?(:a)).to eql(true)
+    end
   end
 
   describe "#find" do
