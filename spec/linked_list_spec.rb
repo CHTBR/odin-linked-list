@@ -48,14 +48,14 @@ RSpec.describe LinkedList do
 
   describe "#size" do
     context "given a LinkedList with 8 elements" do
-      xit "returns the correct size" do
+      it "returns the correct size" do
         linked_list = LinkedList.new(["a", :b, 1, 6, false, "e", :x, 8])
         expect(linked_list.size).to eql(8)
       end
     end
 
     context "given a LinkedList with 12 elements" do
-      xit "returns the correct size" do
+      it "returns the correct size" do
         linked_list = LinkedList.new(["a", :b, 1, 6, false, "e", :x, 8, "w", 43, 12, :l])
         expect(linked_list.size).to eql(12)
       end
@@ -95,11 +95,11 @@ RSpec.describe LinkedList do
   end
 
   describe "#at" do
-    xit "returns the head element as element at index 0" do
+    it "returns the head element as element at index 0" do
       expect(subject.at(0)).to eql(subject.head)
     end
 
-    xit "returns an element at any index" do
+    it "returns an element at any index" do
       expect(subject.at(2)).to eql(:a)
     end
 
@@ -113,7 +113,7 @@ RSpec.describe LinkedList do
   end
 
   describe "#pop" do
-    xit "removes the last element from the array" do
+    it "removes the last element from the array" do
       linked_list = subject
       tail_original = linked_list.tail
       linked_list.pop
@@ -121,8 +121,9 @@ RSpec.describe LinkedList do
       expect(tail_original).to_not eql(tail_new)
     end
 
-    xit "returns the popped element" do
-      expect(subject.pop).to eql(subject.tail)
+    it "returns the popped element" do
+      tail = subject.tail
+      expect(subject.pop).to eql(tail)
     end
 
     xit "throws an error when list is empty" do
