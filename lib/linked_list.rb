@@ -41,6 +41,17 @@ class LinkedList
     head_address.data
   end
 
+  def append(data)
+    new_node = Node.new(data)
+    if head_address.nil?
+      @head_address = new_node
+      return
+    end
+
+    last_node = _traverse
+    last_node.next_address = new_node
+  end
+
   private
 
   def _traverse
