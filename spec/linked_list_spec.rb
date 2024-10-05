@@ -95,6 +95,21 @@ RSpec.describe LinkedList do
   end
 
   describe "#at" do
+    it "returns the head element as element at index 0" do
+      expect(subject.at(0)).to eql(subject.head)
+    end
+
+    it "returns an element at any index" do
+      expect(subject.at(2)).to eql(:a)
+    end
+
+    it "throws an error when passing incorrect value" do
+      expect { subject.at("a") }.to raise_error(Errors::IncorrectIndexValue)
+    end
+
+    it "throws an error when requesting value out of range" do
+      expect { subject.at(5) }.to raise_error(Errors::IndexOutOfRange)
+    end
   end
 
   describe "#pop" do
