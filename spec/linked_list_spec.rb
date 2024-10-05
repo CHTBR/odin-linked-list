@@ -121,6 +121,10 @@ RSpec.describe LinkedList do
       expect(tail_original).to_not eql(tail_new)
     end
 
+    it "returns the popped element" do
+      expect(subject.pop).to eql(subject.tail)
+    end
+
     it "throws an error when list is empty" do
       expect(LinkedList.new.pop).to raise_error(Errors::PoppingEmptyList)
     end
