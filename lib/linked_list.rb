@@ -89,7 +89,7 @@ class LinkedList
     current_node = current_node.next_address until current_node.data == value || current_node.next_address.nil?
     return true if current_node.data == value
 
-   false 
+    false
   end
 
   def find(value)
@@ -109,6 +109,18 @@ class LinkedList
     node_before_index = _traverse(index - 1)
     new_node.next_address = node_before_index.next_address
     node_before_index.next_address = new_node
+  end
+
+  def remove_at(index)
+    if index.zero?
+      deleted_node = head_address
+      @head_address = @head_address.next_address
+    else
+      node_before_index = _traverse(index - 1)
+      deleted_node = node_before_index.next_address
+      node_before_index.next_address = node_before_index.next_address.next_address
+    end
+    deleted_node.data
   end
 
   private
