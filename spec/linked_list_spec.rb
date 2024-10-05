@@ -65,7 +65,7 @@ RSpec.describe LinkedList do
   describe "#head" do
     context "given a LinkedList with elements :b, :c, :a, :d" do
       it "returns the head element" do
-        linked_list = LinkedList.nwe([:b, :c, :a, :d])
+        linked_list = LinkedList.nwe(%i[b c a d])
         expect(linked_list.head).to eql(:b)
       end
     end
@@ -79,6 +79,19 @@ RSpec.describe LinkedList do
   end
 
   describe "#tail" do
+    context "given a LinkedList with elements :b, :c, :a, :d" do
+      it "returns the last element" do
+        linked_list = LinkedList.nwe(%i[b c a d])
+        expect(linked_list.head).to eql(:d)
+      end
+    end
+
+    context "given a LinkedList with elements 7, 3, 9, 1" do
+      it "returns the last element" do
+        linked_list = LinkedList.nwe([7, 3, 9, 1])
+        expect(linked_list.head).to eql(1)
+      end
+    end
   end
 
   describe "#at" do
