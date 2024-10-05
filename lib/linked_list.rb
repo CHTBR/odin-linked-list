@@ -16,4 +16,17 @@ class LinkedList
       current_node = new_node
     end
   end
+
+  def to_s
+    return nil if head.data.nil?
+
+    data_arr = []
+    current_node = head
+    until current_node.nil?
+      data_arr << current_node.data
+      current_node = current_node.next_address
+    end
+    data_arr << "nil"
+    data_arr.join(" -> ")
+  end
 end
