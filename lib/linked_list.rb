@@ -37,6 +37,10 @@ class LinkedList
     last_node.data
   end
 
+  def head
+    head_address.data
+  end
+
   private
 
   def _traverse
