@@ -58,6 +58,10 @@ class LinkedList
     @head_address = new_node
   end
 
+  def at(index)
+    _traverse(index).data
+  end
+
   private
 
   def _traverse(*optional_index)
