@@ -137,6 +137,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#find" do
+    it "returns nil if the list doesn't contain the value" do
+      expect(subject.find("not an element")).to eql(nil)
+    end
+
+    it "returns the index of the value" do
+      expect(subject.find(true)).to eql(3)
+    end
   end
 
   describe "#to_s" do
