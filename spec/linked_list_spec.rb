@@ -103,12 +103,12 @@ RSpec.describe LinkedList do
       expect(subject.at(2)).to eql(:a)
     end
 
-    xit "throws an error when passing incorrect value" do
-      expect { subject.at("a") }.to raise_error(Errors::IncorrectIndexValue)
+    it "throws an error when passing incorrect value" do
+      expect { subject.at("a") }.to raise_error(TypeError)
     end
 
-    xit "throws an error when requesting value out of range" do
-      expect { subject.at(5) }.to raise_error(Errors::IndexOutOfRange)
+    it "returns nil when requesting value out of range" do
+      expect(subject.at(5)).to eql(nil)
     end
   end
 
@@ -126,8 +126,8 @@ RSpec.describe LinkedList do
       expect(subject.pop).to eql(tail)
     end
 
-    xit "throws an error when list is empty" do
-      expect(LinkedList.new.pop).to raise_error(Errors::PoppingEmptyList)
+    it "throws an error when list is empty" do
+      expect { LinkedList.new.pop }.to raise_error(EmptyList)
     end
   end
 
