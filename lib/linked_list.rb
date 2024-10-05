@@ -70,6 +70,7 @@ class LinkedList
 
   def at(index)
     raise TypeError unless index.instance_of? Integer
+    return nil if index >= size
 
     _traverse(index).data
   end
