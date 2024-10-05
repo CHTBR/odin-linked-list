@@ -169,6 +169,17 @@ RSpec.describe LinkedList do
   end
 
   describe "#insert_at" do
+    it "adds the element at the given index" do
+      linked_list = subject
+      linked_list.insert_at(2, "inserted value")
+      expect(linked_list.at(2)).to eql("inserted vlaue")
+    end
+
+    it "append the element if the index is greater than list size" do
+      linked_list = subject
+      linked_list.insert_at(5, "inserted value")
+      expect(linked_list.tail).to eql("inserted value")
+    end
   end
 
   describe "#remove_at" do
