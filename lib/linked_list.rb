@@ -1,5 +1,11 @@
 require_relative "node"
 
+class EmptyList < StandardError
+  def initialize(msg = "Can't perform operation on an empty list")
+    super
+  end
+end
+
 # A class for managing a linked list DS and containing related methods
 class LinkedList
   attr_accessor :head_address, :size
@@ -66,12 +72,21 @@ class LinkedList
     _traverse(index).data
   end
 
+  def pop
+    raise EmptyList.new("Can't perform pop on an empty list") unless head_address
+
+    before_last_node = _traverse(size - 2)
+    last_node = before_last_node.next_address
+    before_last_node.next_address = nil
+    last_node.data
+  end
+
   private
 
   def _traverse(*optional_index)
     index = optional_index[0] || -1
     current_node = head_address
-    until current_node.next_address.nil? || index == 0
+    until current_node.next_address.nil? || index.zero?
       current_node = current_node.next_address
       index -= 1
     end
