@@ -33,7 +33,7 @@ RSpec.describe LinkedList do
       it "adds the given value to the beginning of the linked list" do
         linked_list = subject
         linked_list.prepend(true)
-        expect(linked_list.at(0)).to eql(true)
+        expect(linked_list.head).to eql(true)
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe LinkedList do
       it "adds the given value to the beginning of the linked list" do
         linked_list = subject
         linked_list.prepend("value")
-        expect(linked_list.at(0)).to eql("value")
+        expect(linked_list.head).to eql("value")
       end
     end
   end
