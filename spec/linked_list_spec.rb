@@ -80,16 +80,16 @@ RSpec.describe LinkedList do
 
   describe "#tail" do
     context "given a LinkedList with elements :b, :c, :a, :d" do
-      xit "returns the last element" do
-        linked_list = LinkedList.nwe(%i[b c a d])
-        expect(linked_list.head).to eql(:d)
+      it "returns the last element" do
+        linked_list = LinkedList.new(%i[b c a d])
+        expect(linked_list.tail).to eql(:d)
       end
     end
 
     context "given a LinkedList with elements 7, 3, 9, 1" do
-      xit "returns the last element" do
-        linked_list = LinkedList.nwe([7, 3, 9, 1])
-        expect(linked_list.head).to eql(1)
+      it "returns the last element" do
+        linked_list = LinkedList.new([7, 3, 9, 1])
+        expect(linked_list.tail).to eql(1)
       end
     end
   end
@@ -152,21 +152,21 @@ RSpec.describe LinkedList do
 
   describe "#to_s" do
     context "when we add the values 1, 2, 3" do
-      xit "returns a string containing all the elements in the LinkedList" do
+      it "returns a string containing all the elements in the LinkedList" do
         linked_list = LinkedList.new([1, 2, 3])
         expect(linked_list.to_s).to eql("1 -> 2 -> 3 -> nil")
       end
     end
 
     context "when we add the values 2, 3, 1" do
-      xit "returns a string containing all the elements in the LinkedList" do
+      it "returns a string containing all the elements in the LinkedList" do
         linked_list = LinkedList.new([2, 3, 1])
         expect(linked_list.to_s).to eql("2 -> 3 -> 1 -> nil")
       end
     end
 
     context "when we add values of different types" do
-      xit "returns a string with all the elements in the LinkedList properly converted to_s" do
+      it "returns a string with all the elements in the LinkedList properly converted to_s" do
         expect(subject.to_s).to eql("1 -> 2 -> a -> true -> nil")
       end
     end
