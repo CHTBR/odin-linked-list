@@ -38,6 +38,25 @@ RSpec.describe LinkedList do
   end
 
   describe "#to_s" do
+    context "when we append the values 1, 2, 3" do
+      it "returns a string containing all the elements in the LinkedList" do
+        linked_list = LinkedList.new
+        linked_list.append(1)
+        linked_list.append(2)
+        linked_list.append(3)
+        expect(linked_list.to_s).to eql("1 -> 2 -> 3 -> nil")
+      end
+    end
+
+    context "when we append the values 2, 3, 1" do
+      it "returns a string containing all the elements in the LinkedList" do
+        linked_list = LinkedList.new
+        linked_list.append(2)
+        linked_list.append(3)
+        linked_list.append(1)
+        expect(linked_list.to_s).to eql("2 -> 3 -> 1 -> nil")
+      end
+    end
   end
 
   describe "#insert_at" do
