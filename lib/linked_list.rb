@@ -87,6 +87,7 @@ class LinkedList
     before_last_node = _traverse(size - 2)
     last_node = before_last_node.next_address
     before_last_node.next_address = nil
+    @size -= 1
     last_node.data
   end
 
@@ -111,6 +112,7 @@ class LinkedList
   end
 
   def insert_at(index, value)
+    @size += 1
     new_node = Node.new(value)
     node_before_index = _traverse(index - 1)
     new_node.next_address = node_before_index.next_address
@@ -119,6 +121,7 @@ class LinkedList
 
   def remove_at(index)
     raise IndexOutOfRange.new("Can't remove nonexistent element") unless index < size
+    @size += 1
     if index.zero?
       deleted_node = head_address
       @head_address = @head_address.next_address
