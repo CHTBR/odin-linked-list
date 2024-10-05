@@ -113,6 +113,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#pop" do
+    it "removes the last element from the array" do
+      linked_list = subject
+      tail_original = linked_list.tail
+      linked_list.pop
+      tail_new = linked_list.tail
+      expect(tail_original).to_not eql(tail_new)
+    end
   end
 
   describe "#contains?" do
