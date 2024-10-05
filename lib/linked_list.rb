@@ -6,6 +6,12 @@ class EmptyList < StandardError
   end
 end
 
+class IndexOutOfRange < StandardError
+  def initialize(msg = "Can't perform operation on a nonexistent element")
+    super(msg)
+  end
+end
+
 # A class for managing a linked list DS and containing related methods
 class LinkedList
   attr_accessor :head_address, :size
