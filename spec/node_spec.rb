@@ -11,8 +11,10 @@ RSpec.describe Node do
   end
 
   describe "#next_address" do
-  end
-
-  describe "#next_address=" do
+    it "sets the nex_address variable to the given value" do
+      node = subject
+      node.next_address = "next address"
+      expect(node.next_address).to eql("next address")
+    end
   end
 end
