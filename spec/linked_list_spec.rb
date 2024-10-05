@@ -120,6 +120,10 @@ RSpec.describe LinkedList do
       tail_new = linked_list.tail
       expect(tail_original).to_not eql(tail_new)
     end
+
+    it "throws an error when list is empty" do
+      expect(LinkedList.new.pop).to raise_error(Errors::PoppingEmptyList)
+    end
   end
 
   describe "#contains?" do
