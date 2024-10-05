@@ -87,9 +87,9 @@ class LinkedList
   def contains?(value)
     current_node = head_address
     current_node = current_node.next_address until current_node.data == value || current_node.next_address.nil?
-    return false if current_node.next_address.nil?
+    return true if current_node.data == value
 
-    true
+   false 
   end
 
   def find(value)
