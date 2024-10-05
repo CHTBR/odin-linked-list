@@ -12,7 +12,7 @@ RSpec.describe LinkedList do
 
   describe "#append" do
     context "when given the number 8" do
-      xit "adds the given value to the end of the linked list" do
+      it "adds the given value to the end of the linked list" do
         linked_list = subject
         linked_list.append(8)
         expect(linked_list.tail).to eql(8)
@@ -20,7 +20,7 @@ RSpec.describe LinkedList do
     end
 
     context "when given the symbol :e" do
-      xit "adds the given value to the end of the linked list" do
+      it "adds the given value to the end of the linked list" do
         linked_list = subject
         linked_list.append(:e)
         expect(linked_list.tail).to eql(:e)
@@ -28,19 +28,19 @@ RSpec.describe LinkedList do
     end
   end
 
-  describe "#prepend" do
+  describe "#list_prepend" do
     context "when given the boolean true" do
-      xit "adds the given value to the beginning of the linked list" do
+      it "adds the given value to the beginning of the linked list" do
         linked_list = subject
-        linked_list.prepend(true)
+        linked_list.list_prepend(true)
         expect(linked_list.head).to eql(true)
       end
     end
 
     context "when given the the string \"value\"" do
-      xit "adds the given value to the beginning of the linked list" do
+      it "adds the given value to the beginning of the linked list" do
         linked_list = subject
-        linked_list.prepend("value")
+        linked_list.list_prepend("value")
         expect(linked_list.head).to eql("value")
       end
     end
