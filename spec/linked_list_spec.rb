@@ -132,21 +132,21 @@ RSpec.describe LinkedList do
   end
 
   describe "#contains?" do
-    xit "returns false when the list doesn't contain the value" do
+    it "returns false when the list doesn't contain the value" do
       expect(subject.contains?("not an element")).to eql(false)
     end
 
-    xit "returns true when the list contains the value" do
+    it "returns true when the list contains the value" do
       expect(subject.contains?(:a)).to eql(true)
     end
   end
 
   describe "#find" do
-    xit "returns nil if the list doesn't contain the value" do
+    it "returns nil if the list doesn't contain the value" do
       expect(subject.find("not an element")).to eql(nil)
     end
 
-    xit "returns the index of the value" do
+    it "returns the index of the value" do
       expect(subject.find(true)).to eql(3)
     end
   end
@@ -174,13 +174,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#insert_at" do
-    xit "adds the element at the given index" do
+    it "adds the element at the given index" do
       linked_list = subject
       linked_list.insert_at(2, "inserted value")
-      expect(linked_list.at(2)).to eql("inserted vlaue")
+      expect(linked_list.at(2)).to eql("inserted value")
     end
 
-    xit "append the element if the index is greater than list size" do
+    it "append the element if the index is greater than list size" do
       linked_list = subject
       linked_list.insert_at(5, "inserted value")
       expect(linked_list.tail).to eql("inserted value")
