@@ -60,9 +60,13 @@ class LinkedList
 
   private
 
-  def _traverse
+  def _traverse(*optional_index)
+    index = optional_index[0] || -1
     current_node = head_address
-    current_node = current_node.next_address until current_node.next_address.nil?
+    until current_node.next_address.nil? || index == 0
+      current_node = current_node.next_address
+      index -= 1
+    end
     current_node
   end
 end
