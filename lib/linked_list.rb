@@ -104,6 +104,13 @@ class LinkedList
     nil
   end
 
+  def insert_at(index, value)
+    new_node = Node.new(value)
+    node_before_index = _traverse(index - 1)
+    new_node.next_address = node_before_index.next_address
+    node_before_index.next_address = new_node
+  end
+
   private
 
   def _traverse(*optional_index)
