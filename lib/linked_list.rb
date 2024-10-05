@@ -118,6 +118,7 @@ class LinkedList
   end
 
   def remove_at(index)
+    raise IndexOutOfRange.new("Can't remove nonexistent element") unless index < size
     if index.zero?
       deleted_node = head_address
       @head_address = @head_address.next_address
