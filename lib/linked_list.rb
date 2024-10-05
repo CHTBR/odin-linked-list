@@ -29,4 +29,19 @@ class LinkedList
     data_arr << "nil"
     data_arr.join(" -> ")
   end
+
+  def tail
+    return "nil" if head.nil?
+
+    last_node = _traverse
+    last_node.data
+  end
+
+  private
+
+  def _traverse
+    current_node = head
+    current_node = current_node.next_address until current_node.next_address.nil?
+    current_node
+  end
 end
