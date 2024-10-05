@@ -29,6 +29,21 @@ RSpec.describe LinkedList do
   end
 
   describe "#prepend" do
+    context "when given the boolean true" do
+      it "adds the given value to the beginning of the linked list" do
+        linked_list = subject
+        linked_list.prepend(true)
+        expect(linked_list.at(0)).to eql(true)
+      end
+    end
+
+    context "when given the the string \"value\"" do
+      it "adds the given value to the beginning of the linked list" do
+        linked_list = subject
+        linked_list.prepend("value")
+        expect(linked_list.at(0)).to eql("value")
+      end
+    end
   end
 
   describe "#size" do
