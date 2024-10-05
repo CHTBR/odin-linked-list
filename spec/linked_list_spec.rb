@@ -188,7 +188,7 @@ RSpec.describe LinkedList do
   end
 
   describe "#remove_at" do
-    xit "removes the element at the given index" do
+    it "removes the element at the given index" do
       linked_list = subject
       value_original = linked_list.at(1)
       linked_list.remove_at(1)
@@ -196,8 +196,9 @@ RSpec.describe LinkedList do
       expect(value_original).to_not eql(value_new)
     end
 
-    xit "returns the removed element" do
-      expect(subject.remove_at(0)).to eql(subject.at(0))
+    it "returns the removed element" do
+      element = subject.at(0)
+      expect(subject.remove_at(0)).to eql(element)
     end
 
     xit "throws an error when removing value out of range" do
