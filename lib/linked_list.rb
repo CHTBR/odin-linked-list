@@ -84,6 +84,14 @@ class LinkedList
     last_node.data
   end
 
+  def contains?(value)
+    current_node = head_address
+    current_node = current_node.next_address until current_node.data == value || current_node.next_address.nil?
+    return false if current_node.next_address.nil?
+
+    true
+  end
+
   private
 
   def _traverse(*optional_index)
