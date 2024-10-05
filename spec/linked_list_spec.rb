@@ -53,17 +53,23 @@ RSpec.describe LinkedList do
   end
 
   describe "#to_s" do
-    context "when we append the values 1, 2, 3" do
+    context "when we add the values 1, 2, 3" do
       it "returns a string containing all the elements in the LinkedList" do
         linked_list = LinkedList.new([1, 2, 3])
         expect(linked_list.to_s).to eql("1 -> 2 -> 3 -> nil")
       end
     end
 
-    context "when we append the values 2, 3, 1" do
+    context "when we add the values 2, 3, 1" do
       it "returns a string containing all the elements in the LinkedList" do
         linked_list = LinkedList.new([2, 3, 1])
         expect(linked_list.to_s).to eql("2 -> 3 -> 1 -> nil")
+      end
+    end
+
+    context "when we add values of different types" do
+      it "returns a string with all the elements in the LinkedList properly converted to_s" do
+        expect(subject.to_s).to eql("1 -> 2 -> a -> true -> nil")
       end
     end
   end
