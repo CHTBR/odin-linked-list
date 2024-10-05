@@ -52,6 +52,12 @@ class LinkedList
     last_node.next_address = new_node
   end
 
+  def list_prepend(data)
+    new_node = Node.new(data)
+    new_node.next_address = head_address
+    @head_address = new_node
+  end
+
   private
 
   def _traverse
