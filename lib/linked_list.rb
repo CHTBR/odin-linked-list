@@ -92,6 +92,18 @@ class LinkedList
     true
   end
 
+  def find(value)
+    current_node = head_address
+    index = 0
+    until current_node.data == value || current_node.next_address.nil?
+      current_node = current_node.next_address
+      index += 1
+    end
+    return index if current_node.data == value
+
+    nil
+  end
+
   private
 
   def _traverse(*optional_index)
