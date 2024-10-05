@@ -47,6 +47,19 @@ RSpec.describe LinkedList do
   end
 
   describe "#size" do
+    context "given a LinkedList with 8 elements" do
+      it "returns the correct size" do
+        linked_list = LinkedList.new(["a", :b, 1, 6, false, "e", :x, 8])
+        expect(linked_list.size).to eql(8)
+      end
+    end
+
+    context "given a LinkedList with 12 elements" do
+      it "returns the correct size" do
+        linked_list = LinkedList.new(["a", :b, 1, 6, false, "e", :x, 8, "w", 43, 12, :l])
+        expect(linked_list.size).to eql(12)
+      end
+    end
   end
 
   describe "#head" do
