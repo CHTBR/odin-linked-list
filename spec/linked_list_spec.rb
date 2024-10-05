@@ -5,6 +5,9 @@ RSpec.describe LinkedList do
   let(:subject) { LinkedList.new([1, "2", :a, true]) }
 
   describe "::new" do
+    it "creates a linked list filled with the items from a given array" do
+      expect(LinkedList.new([1, 2, 3].to_s)).to eql("1 -> 2 -> 3 -> nil")
+    end
   end
 
   describe "#append" do
