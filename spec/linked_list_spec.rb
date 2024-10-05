@@ -63,6 +63,19 @@ RSpec.describe LinkedList do
   end
 
   describe "#head" do
+    context "given a LinkedList with elements :b, :c, :a, :d" do
+      it "returns the head element" do
+        linked_list = LinkedList.nwe([:b, :c, :a, :d])
+        expect(linked_list.head).to eql(:b)
+      end
+    end
+
+    context "given a LinkedList with elements 7, 3, 9, 1" do
+      it "returns the head element" do
+        linked_list = LinkedList.nwe([7, 3, 9, 1])
+        expect(linked_list.head).to eql(7)
+      end
+    end
   end
 
   describe "#tail" do
