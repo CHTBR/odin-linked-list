@@ -69,6 +69,8 @@ class LinkedList
   end
 
   def at(index)
+    raise TypeError unless index.instance_of? Integer
+
     _traverse(index).data
   end
 
