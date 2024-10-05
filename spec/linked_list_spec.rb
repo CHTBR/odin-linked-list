@@ -198,5 +198,9 @@ RSpec.describe LinkedList do
     it "returns the removed element" do
       expect(subject.remove_at(0)).to eql(subject.at(0))
     end
+
+    it "throws an error when removing value out of range" do
+      expect { subject.remove_at(5) }.to raise_error(Errors::IndexOutOfRange)
+    end
   end
 end
