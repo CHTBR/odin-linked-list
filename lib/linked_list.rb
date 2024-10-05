@@ -2,12 +2,14 @@ require_relative "node"
 
 # A class for managing a linked list DS and containing related methods
 class LinkedList
-  attr_accessor :head_address
+  attr_accessor :head_address, :size
 
   def initialize(*args)
+    @size = 0
     return unless args[0]
 
     initial_args = args[0]
+    @size = initial_args.size
     @head_address = Node.new(initial_args[0])
     current_node = head_address
     initial_args[1..].each do |element|
@@ -42,6 +44,7 @@ class LinkedList
   end
 
   def append(data)
+    @size += 1
     new_node = Node.new(data)
     if head_address.nil?
       @head_address = new_node
@@ -53,6 +56,7 @@ class LinkedList
   end
 
   def list_prepend(data)
+    @size += 1
     new_node = Node.new(data)
     new_node.next_address = head_address
     @head_address = new_node
