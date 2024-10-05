@@ -11,6 +11,21 @@ RSpec.describe LinkedList do
   end
 
   describe "#append" do
+    context "when given the number 8" do
+      it "adds the given value to the end of the linked list" do
+        linked_list = subject
+        linked_list.append(8)
+        expect(linked_list.tail).to eql(8)
+      end
+    end
+
+    context "when given the symbol :e" do
+      it "adds the given value to the end of the linked list" do
+        linked_list = subject
+        linked_list.append(:e)
+        expect(linked_list.tail).to eql(:e)
+      end
+    end
   end
 
   describe "#prepend" do
