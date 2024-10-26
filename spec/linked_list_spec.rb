@@ -11,42 +11,93 @@ RSpec.describe LinkedList do
   end
 
   describe "#append" do
-    context "when given the number 8" do
-      it "adds the given value to the end of the linked list" do
-        linked_list = subject
-        linked_list.append(8)
-        expect(linked_list.tail).to eql(8)
+    context "when given a non-empty list" do
+      context "when given the number 8" do
+        it "adds the given value to the end of the linked list" do
+          linked_list = subject
+          linked_list.append(8)
+          expect(linked_list.tail).to eql(8)
+        end
+      end
+
+      context "when given the symbol :e" do
+        it "adds the given value to the end of the linked list" do
+          linked_list = subject
+          linked_list.append(:e)
+          expect(linked_list.tail).to eql(:e)
+        end
       end
     end
 
-    context "when given the symbol :e" do
-      it "adds the given value to the end of the linked list" do
-        linked_list = subject
-        linked_list.append(:e)
-        expect(linked_list.tail).to eql(:e)
+    context "when given an empty list" do
+      before do
+        @linked_list = LinkedList.new
+      end
+
+      context "when given the number 8" do
+        it "adds the given value to the end of the linked list" do
+          @linked_list.append(8)
+          expect(@linked_list.tail).to eql(8)
+        end
+      end
+
+      context "when given the symbol :e" do
+        it "adds the given value to the end of the linked list" do
+          @linked_list.append(:e)
+          expect(@linked_list.tail).to eql(:e)
+        end
       end
     end
   end
 
   describe "#list_prepend" do
-    context "when given the boolean true" do
-      it "adds the given value to the beginning of the linked list" do
-        linked_list = subject
-        linked_list.list_prepend(true)
-        expect(linked_list.head).to eql(true)
+    context "when given a non-empty list" do
+      context "when given the boolean true" do
+        it "adds the given value to the beginning of the linked list" do
+          linked_list = subject
+          linked_list.list_prepend(true)
+          expect(linked_list.head).to eql(true)
+        end
+      end
+
+      context "when given the the string \"value\"" do
+        it "adds the given value to the beginning of the linked list" do
+          linked_list = subject
+          linked_list.list_prepend("value")
+          expect(linked_list.head).to eql("value")
+        end
       end
     end
 
-    context "when given the the string \"value\"" do
-      it "adds the given value to the beginning of the linked list" do
-        linked_list = subject
-        linked_list.list_prepend("value")
-        expect(linked_list.head).to eql("value")
+    context "when given an empty list" do
+      before do
+        @linked_list = LinkedList.new
+      end
+
+      context "when given the boolean true" do
+        it "adds the given value to the beginning of the linked list" do
+          @linked_list.list_prepend(true)
+          expect(@linked_list.head).to eql(true)
+        end
+      end
+
+      context "when given the the string \"value\"" do
+        it "adds the given value to the beginning of the linked list" do
+          @linked_list.list_prepend("value")
+          expect(@linked_list.head).to eql("value")
+        end
       end
     end
   end
 
   describe "#size" do
+    context "given an empty LinkedList" do
+      it "returns the correct size" do
+        linked_list = LinkedList.new
+        expect(linked_list.size).to eql(0)
+      end
+    end
+
     context "given a LinkedList with 8 elements" do
       it "returns the correct size" do
         linked_list = LinkedList.new(["a", :b, 1, 6, false, "e", :x, 8])
@@ -63,6 +114,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#head" do
+    context "given an empty list" do
+      it "returns nil" do
+        linked_list = LinkedList.new
+        expect(linked_list.head).to eql(nil)
+      end
+    end
+
     context "given a LinkedList with elements :b, :c, :a, :d" do
       it "returns the head element" do
         linked_list = LinkedList.new(%i[b c a d])
@@ -79,6 +137,13 @@ RSpec.describe LinkedList do
   end
 
   describe "#tail" do
+    context "given an empty list" do
+      it "returns nil" do
+        linked_list = LinkedList.new
+        expect(linked_list.tail).to eql(nil)
+      end
+    end
+
     context "given a LinkedList with elements :b, :c, :a, :d" do
       it "returns the last element" do
         linked_list = LinkedList.new(%i[b c a d])
@@ -95,6 +160,10 @@ RSpec.describe LinkedList do
   end
 
   describe "#at" do
+    it "returns nil when list is empty" do
+      expect(LinkedList.new.at(0)).to eql(nil)
+    end
+
     it "returns the head element as element at index 0" do
       expect(subject.at(0)).to eql(subject.head)
     end
@@ -132,6 +201,10 @@ RSpec.describe LinkedList do
   end
 
   describe "#contains?" do
+    it "returns false when the list is empty" do
+      expect(LinkedList.new.contains?("not an element")).to eql(false)
+    end
+
     it "returns false when the list doesn't contain the value" do
       expect(subject.contains?("not an element")).to eql(false)
     end
@@ -142,6 +215,10 @@ RSpec.describe LinkedList do
   end
 
   describe "#find" do
+    it "returns nil if the list is empty" do
+      expect(LinkedList.new.find("not an element")).to eql(nil)
+    end
+
     it "returns nil if the list doesn't contain the value" do
       expect(subject.find("not an element")).to eql(nil)
     end
@@ -152,6 +229,14 @@ RSpec.describe LinkedList do
   end
 
   describe "#to_s" do
+    context "when given an empty list" do
+      it "returns a string \"nil\"" do
+        linked_list = LinkedList.new
+        expect(linked_list.to_s).to eql("nil")
+      end
+    end
+
+
     context "when we add the values 1, 2, 3" do
       it "returns a string containing all the elements in the LinkedList" do
         linked_list = LinkedList.new([1, 2, 3])
@@ -174,6 +259,12 @@ RSpec.describe LinkedList do
   end
 
   describe "#insert_at" do
+    it "assigns the element as head if the list is empty" do
+      linked_list = LinkedList.new
+      linked_list.insert_at(0, "inserted value")
+      expect(linked_list.head).to eql("inserted value")
+    end
+
     it "adds the element at the given index" do
       linked_list = subject
       linked_list.insert_at(2, "inserted value")
@@ -203,6 +294,10 @@ RSpec.describe LinkedList do
 
     it "throws an error when removing value out of range" do
       expect { subject.remove_at(5) }.to raise_error(IndexOutOfRange)
+    end
+
+    it "throws an error when list is empty" do
+      expect { LinkedList.new.remove_at(0) }.to raise_error(EmptyList)
     end
   end
 end
