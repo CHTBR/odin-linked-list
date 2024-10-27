@@ -32,7 +32,7 @@ class LinkedList
   end
 
   def to_s
-    return nil if head_address.data.nil?
+    return "nil" if head_address.nil?
 
     data_arr = []
     current_node = head_address
@@ -45,13 +45,15 @@ class LinkedList
   end
 
   def tail
-    return "nil" if head_address.nil?
+    return nil if head_address.nil?
 
     last_node = _traverse
     last_node.data
   end
 
   def head
+    return nil if head_address.nil?
+
     head_address.data
   end
 
@@ -92,6 +94,8 @@ class LinkedList
   end
 
   def contains?(value)
+    return false if head_address.nil?
+
     current_node = head_address
     current_node = current_node.next_address until current_node.data == value || current_node.next_address.nil?
     return true if current_node.data == value
@@ -100,6 +104,8 @@ class LinkedList
   end
 
   def find(value)
+    return nil if head_address.nil?
+
     current_node = head_address
     index = 0
     until current_node.data == value || current_node.next_address.nil?
@@ -113,13 +119,18 @@ class LinkedList
 
   def insert_at(index, value)
     @size += 1
-    new_node = Node.new(value)
-    node_before_index = _traverse(index - 1)
-    new_node.next_address = node_before_index.next_address
-    node_before_index.next_address = new_node
+    if head_address.nil?
+      append(value)
+    else
+      new_node = Node.new(value)
+      node_before_index = _traverse(index - 1)
+      new_node.next_address = node_before_index.next_address
+      node_before_index.next_address = new_node
+    end
   end
 
   def remove_at(index)
+    raise EmptyList.new("Can't remove elements from an empty list") if head_address.nil?
     raise IndexOutOfRange.new("Can't remove nonexistent element") unless index < size
     @size += 1
     if index.zero?
