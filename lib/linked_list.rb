@@ -132,7 +132,7 @@ class LinkedList
   def remove_at(index)
     raise EmptyList.new("Can't remove elements from an empty list") if head_address.nil?
     raise IndexOutOfRange.new("Can't remove nonexistent element") unless index < size
-    @size += 1
+    @size -= 1
     if index.zero?
       deleted_node = head_address
       @head_address = @head_address.next_address
